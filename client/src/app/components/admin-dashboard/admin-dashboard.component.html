@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 well left_bar">
+      <h1 style="font-weight:bold;color:cadetblue;">User List</h1>
+      <form>
+        <div class="checkbox" *ngFor="let user of user_name_list">
+          <label style="font-weight:bold;" ><input (change)="checkBox(user.appartmentId,$event)" type="checkbox" value="{{user.appartmentId}}">{{user.name}}</label>
+        </div>
+      </form>
+      
+    </div>
+    
+    <div class="col-sm-6 col-sm-push-1">
+        <div class="row">
+          <h1 style="font-weight:bold;text-align:center;color:rgb(2,163,221)">Filter Data</h1>
+          <form (submit)="querySearch()">
+              <div class="form-group">
+                <label>StartDate</label>
+                <input type="text" class="form-control" [(ngModel)]="sdate" name="sdate" placeholder="YYYY-MM-DD">
+              </div>
+              <div class="form-group">
+                <label>EndDate</label>
+                <input type="text" class="form-control" [(ngModel)]="edate" name="edate" placeholder="YYYY-MM-DD">
+              </div>
+
+              <div class="form-group">
+                  <label>StartTime</label>
+                  <input type="text" class="form-control" [(ngModel)]="stime" name="stime" placeholder="HH-MM-SS">
+                </div>
+
+              <div class="form-group">
+                  <label>EndTime</label>
+                  <input type="text" class="form-control" [(ngModel)]="etime" name="etime" placeholder="HH-MM-SS">
+                </div>
+
+              <input type="submit" class="btn btn-primary" value="Get Graph">
+            </form>
+
+        </div>
+        
+        
+
+    </div>
+    
+  </div>
+
+      </div>
+  <div class="container" style="position:relative;top:60px;">
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-3 well">
+          <h2 style="text-align:center;font-weight:bold;color:cadetblue;">User Water Usage(in Liters)</h2>
+          <h3 style="text-align:center;font-weight:bold;color:orange" *ngFor="let item of test_array">{{item}}L</h3>
+      </div>      
+                
+  </div>
+
+  </div>
+
+
+<br>
+<div class="well container-fluid"  style="position:relative;top:60px;">
+  <h2 style="font-weight:bold;text-align:center">Graphs Area</h2>
+</div>
+
+<div class="container" style="position:relative;top:60px;"> 
+  <div class="row">
+    <div class="col-md-8 col-md-push-2">
+
+    <span style="font-size:15px" *ngIf="time_data && water_data.length > 0" class="label label-default">Tank Water Graph For last 24 hours</span>
+      <div style="display: block;">
+      <canvas baseChart *ngIf="time_data && water_data.length > 0"
+        width="500" height="300"
+                  [(datasets)]="lineChartData"
+                  [(labels)]="lineChartLabels"
+                  [(options)]="lineChartOptions"
+                  [(colors)]="lineChartColors"
+                  [(legend)]="lineChartLegend"
+                  [(chartType)]="lineChartType"
+                  ></canvas>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<br>
+  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-push-2">
+  
+      <span style="font-size:15px" *ngIf=" final_data_list.length > 0" class="label label-default">User Water</span>
+
+      <span style="font-size:15px" *ngIf=" final_data_list.length > 0" class="label label-default">Start Date:{{date_start}}</span>
+
+      <span style="font-size:15px" *ngIf=" final_data_list.length > 0" class="label label-default">End Date: {{date_end}}</span>
+      <br><br><br>
+      <div style="display: block;">
+        <canvas baseChart *ngIf=" final_data_list.length > 0"
+          width="500" height="300"
+                    [(datasets)]="waterlineData"
+                    [(labels)]="waterLabels"
+                    [(options)]="lineChartOptions"
+                    [(colors)]="lineChartColors"
+                    [(legend)]="lineChartLegend"
+                    [(chartType)]="lineChartType"
+                    ></canvas>
+        </div>
+      </div>
+      
+    </div>
+  </div>

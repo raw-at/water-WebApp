@@ -1,0 +1,78 @@
+<div class="container" *ngIf="table_view">
+  <div class="row">
+    <div class="col-sm-12 well left_bar">
+      <h1 style="font-weight:bold;color:cadetblue;">User List</h1>
+      
+      <table class="table"> 
+        <tbody>
+          <tr *ngFor="let user of user_name_list;let i = index">
+            <td>{{user.name}}</td>
+              
+            <td>{{user.email}}</td>
+              
+
+            <td>{{user.appartmentId}}</td>
+            
+
+            <td><button type="button" class="btn btn-success" (click)="update(i)">Update</button></td>
+            
+            
+            <td><button type="button" class="btn btn-danger"  (click)="delete(i)" >Delete</button></td>
+          </tr>
+
+        </tbody>
+
+        <!---
+        <tbody *ngIf="updateClick">
+          
+          <tr *ngFor="let user of user_name_list">
+            <td>
+              <input type="text" [(ngModel)]="name" name="name" placeholder="Name" value="{{user.name}}" class="form-control">
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="email" name="email" placeholder="Email" value="{{user.email}}" class="form-control">
+            </td>
+              <td>
+                  <input type="text" [(ngModel)]="appartmentId" name="appartmentId" placeholder="ApartmentId" value="{{user.appartmentId}}" class="form-control">
+                </td>
+                
+              
+            <td><button type="button" class="btn btn-warning" (click)="Submit()">Submit</button></td>
+            <td><button type="button" class="btn btn-danger"  (click)="delete()" >Delete</button></td>
+          </tr>
+
+        </tbody>
+      -->
+      </table>
+      
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="!table_view">
+    <div class="row">
+      
+      <div class="col-sm-12 well left_bar">
+        <h2 class="page-header">Update User :<span style="font-weight:Bold;color:crimson">{{name}}</span></h2>
+        <form (submit)="Submit()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="name" name="name" class="form-control" value="{{name}}">
+          </div>
+        
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" [(ngModel)]="email" name="email" class="form-control" value="{{email}}">
+          </div>
+        
+          <div class="form-group">
+              <label>Apartment ID</label>
+              <input type="text" [(ngModel)]="appartmentId" name="apartmentId" class="form-control" value="{{appartmentId}}">
+          </div>
+        
+          <input type="submit" class="btn btn-primary" value="Submit">
+          
+        </form>
+    </div>
+</div>
+</div>

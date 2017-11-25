@@ -1,0 +1,23 @@
+{
+  "name": "iot_app",
+  "version": "1.0.0",
+  "description": "backend of the Water IOT app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "\"AbhinavRAWAT\"",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "^4.15.4",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "mysql": "^2.14.1",
+    "passport": "*",
+    "passport-jwt": "*"
+  }
+}

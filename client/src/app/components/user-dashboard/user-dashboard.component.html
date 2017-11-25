@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row">
+      
+      <div class="col-sm-5 well" style="position:relative;top:80px;">
+        
+        <h3 style="font-weight:bold;">{{temp}} <span style="color:rgb(2,163,221)">{{total_water}}</span> Litres</h3>
+
+      </div>
+
+      <div class="col-sm-5 col-sm-push-1  ">
+          <div class="row">
+            <h1 style="font-weight:bold;text-align:center;color:rgb(2,163,221)">Filter Data</h1>
+            <form (submit)="querySearch()">
+                <div class="form-group">
+                  <label>StartDate</label>
+                  <input type="text" class="form-control" [(ngModel)]="sdate" name="sdate" placeholder="YYYY-MM-DD">
+                </div>
+                <div class="form-group">
+                  <label>EndDate</label>
+                  <input type="text" class="form-control" [(ngModel)]="edate" name="edate" placeholder="YYYY-MM-DD">
+                </div>
+  
+                <div class="form-group">
+                    <label>StartTime</label>
+                    <input type="text" class="form-control" [(ngModel)]="stime" name="stime" placeholder="HH-MM-SS">
+                  </div>
+  
+                <div class="form-group">
+                    <label>EndTime</label>
+                    <input type="text" class="form-control" [(ngModel)]="etime" name="etime" placeholder="HH-MM-SS">
+                  </div>
+  
+                <input type="submit" class="btn btn-primary" value="Get Graph">
+              </form>
+  
+          </div>
+          
+          
+          <div class="row">
+  
+            
+          </div>
+  
+      </div>
+    </div>
+  
+  
+  
+  </div>
+
+<div class="container-fluid" style="position:relative;top:30px">
+  <div class="row col-md-3 col-md-push-5"> 
+    <span style="font-size:30px" class="label label-default">Date: {{date}}</span><br><br>
+  </div>
+</div>
+
+<div class="container" style="position:relative;top:50px">
+  <div class="row">
+      <h1 *ngIf="user_time && user_water.length > 0" style="text-align:center;font-weight:bold" class="well" >User Data</h1>
+      
+    <div class="col-md-10 col-md-push-1">
+      <div style="display: block;">
+      <canvas baseChart *ngIf="user_time && user_water.length > 0"
+        width="500" height="200"
+                  [datasets]="waterlineData"
+                  [labels]="waterLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  ></canvas>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        
+        <h2 style="text-align:center;font-weight:bold"  class="well" >Tank Data
+          <br>Current Tank Value:<span style="color:red">{{this.tank_current_value}}</span> Litres
+        </h2>
+        
+      <div class="col-md-10 col-md-push-1">
+        <div style="display: block;">
+        <canvas baseChart *ngIf="time_data && water_data.length > 0"
+          width="500" height="200"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    ></canvas>
+        </div>
+      </div>
+      
+    </div>
+</div>
