@@ -2,8 +2,19 @@
 Graphical representation of water consumption of a building 
 The Web-app WaterWeb is angular 2 and node.js web-app backed by mysql database and chart.js for graphical representation of water consumption.
 JWT-token authentication is used for routing authentication .
+
 ## MainFeatures
 Front-end of webApp represent the dynamic data of water comsumption of a building depending upon user departmentId and admin can watch water consumption history and suggest user for water management tactics for less water wastage.
+
+## Techonologies Used:
+### Angular 2
+### Node.js
+### Mysql-database
+### Express.js
+### PostMan,Httpie
+### Passport.js
+### Chart.js
+
 
 # Screenshots
 # -------------------------------------------------------------------------------
